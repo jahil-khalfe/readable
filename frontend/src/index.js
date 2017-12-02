@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import {render} from 'react-dom';
+import Routes from './containers/App/Routes';
+import 'typeface-roboto';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+render(<Routes />, document.getElementById('root'));
