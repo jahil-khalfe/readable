@@ -3,3 +3,4 @@
 frontend/node_modules
 frontend/dist
 api-server/node_modules
+projectFilesBackup/
