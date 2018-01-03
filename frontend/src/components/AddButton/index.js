@@ -17,6 +17,7 @@ const AddButton = styled.button`
   right: 20px;
   cursor: pointer;
   transition: all 0.3s linear;
+  text-decoration: none;
   :hover {
     border: 1px inset #97EFE9;
     font-size: 3em;

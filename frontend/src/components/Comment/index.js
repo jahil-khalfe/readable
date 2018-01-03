@@ -128,7 +128,7 @@ class Comments extends Component {
           </Button>
         </div>
       </Comment>
-    )
+    );
     return <h1>Comment Deleted</h1>
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link, BrowserRouter as Router } from 'react-router-dom';
 import AddButton from '../../components/AddButton';
 
 const Nav = styled.nav`
@@ -22,9 +23,13 @@ const AppTitle = styled.div`
 const NavBar = () => (
   <Nav>
     <AppTitle>
-      <h1>Readable</h1>
+      <Link to='/'>
+        <h1>Readable</h1>
+      </Link>
     </AppTitle>
-    <AddButton>+</AddButton>
+    <Link to='/post/new'>
+      <AddButton>+</AddButton>
+    </Link>
   </Nav>
 );
 
