@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCategoryPosts } from "../Home/actions";
 import PageContainer from '../../components/PageContainer';
 import PageContent from '../../components/PageContent';
-import { CardContainer, Card, Item } from '../../components/Card';
 import AddButton from '../../components/AddButton';
 import SortButton from '../../components/SortButton';
 import ButtonContainer from '../../components/ButtonContainer';
