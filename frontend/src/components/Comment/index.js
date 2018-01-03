@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import * as MD from 'react-icons/lib/md';
+import { updateCommentAction, upVote, downVote, deleteComments } from '../../containers/Home/actions';
 
 export const Button = styled.button`
   padding: 0.6em 0.8em;
@@ -49,18 +50,12 @@ const UpdateComment = styled.div`
   }
 `;
 
+
 class Comments extends Component {
   state = {
     updateIsOpen: false,
     body: '',
   };
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props !== nextProps) {
-      console.log(nextProps.body)
-      this.setState({ body: nextProps.body })
-    }
-  }
 
   toggleInput = () => {
     if (this.state.updateIsOpen === false) {
@@ -70,20 +65,39 @@ class Comments extends Component {
     }
   };
 
+
   handleChange = e => {
     this.setState({ body: e.target.value })
   };
 
+  handleCommentUpdate = () => {
+    const updated = { ...this.props, body: this.state.body, timestamp: new Date().getTime() };
+    console.dir(updated);
+    this.props.updateComment(updated);
+  };
+
+  handleDelete = () => {
+    this.props.deleteComment(this.props)
+  };
+
+  upVote = () => {
+    this.props.upVoteComment(this.props);
+  };
+
+  downVote = () => {
+    this.props.downVoteComment(this.props);
+  };
+
   render() {
-    const { body, timestamp, id, voteScore, author, } = this.props;
-    return (
+    const { body, timestamp, voteScore, author, deleted } = this.props;
+    if (!deleted) return (
       <Comment>
         <UpdateComment isOpen={this.state.updateIsOpen}>
           <input type="text"
-                 value={body}
+                 placeholder={body}
                  onChange={this.handleChange}
           />
-          <button onClick={this.toggleInput}>Update</button>
+          <button onClick={this.handleCommentUpdate}>Update</button>
           <button onClick={this.toggleInput}>Cancel</button>
         </UpdateComment>
         <Body>{body}</Body>
@@ -98,19 +112,32 @@ class Comments extends Component {
           <Button onClick={this.toggleInput}>
             <MD.MdCreate/>
           </Button>
-          <Button title="Delete">
+          <Button title="Delete"
+                  onClick={this.handleDelete}
+          >
             <MD.MdDelete/>
           </Button>
-          <Button title="Vote Down">
+          <Button title="Vote Down"
+                  onClick={this.downVote}
+          >
             <MD.MdThumbDown/>
           </Button>
-          <Button title="Vote Up">
+          <Button title="Vote Up"
+                  onClick={this.upVote}>
             <MD.MdThumbUp/>
           </Button>
         </div>
       </Comment>
     )
+    return <h1>Comment Deleted</h1>
   }
 }
 
-export default Comments;
+const mapDispatchToProps = dispatch => ({
+  updateComment: item => dispatch(updateCommentAction(item)),
+  upVoteComment: item => dispatch(upVote(item)),
+  downVoteComment: item => dispatch(downVote(item)),
+  deleteComment: item => dispatch(deleteComments(item)),
+});
+
+export default connect(null, mapDispatchToProps)(Comments);

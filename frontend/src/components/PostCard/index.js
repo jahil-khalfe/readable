@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import styled from 'styled-components';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as MD from 'react-icons/lib/md';
 import Heading from '../../components/Heading';
 import { CardContainer, Card, Item } from '../../components/Card';

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getPosts, getCategories } from "./actions";
 import PageContainer from '../../components/PageContainer';
@@ -63,7 +63,7 @@ class Home extends PureComponent {
           <Heading>Posts</Heading>
           {renderList &&
           renderList.map((item, i) =>
-            <PostCard {...item}/>
+            <PostCard {...item} key={i}/>
           )}
         </PageContent>
       </PageContainer>
