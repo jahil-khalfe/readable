@@ -5,7 +5,6 @@ import thunk from 'redux-thunk';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from '../Home';
 import homeReducer from '../Home/reducers';
-import NavBar from '../../components/NavBar';
 import AddPost from '../../components/AddPost';
 import EditPost from '../../components/EditPost';
 import Category from '../../containers/Category';
@@ -19,17 +18,13 @@ let store = createStore(homeReducer, compose(
 const Routes = () => (
     <Provider store={store}>
       <Router>
-        <div>
-          <NavBar/>
           <Switch>
             <Route exact path='/' component={Home}/>
-            <Route exact path='/:category' component={Category}/>
-            <Route path='/:category/:id' component={Post}/>
             <Route exact path='/post/new' component={AddPost}/>
-            <Route path='/post/edit/:id' component={EditPost}/>
-            <Route path='*' component={() => <h1>404</h1>}/>
+            <Route exact path='/post/edit/:id' component={EditPost}/>
+            <Route exact path='/:category' component={Category}/>
+            <Route exact path='/:category/:id' component={Post}/>
           </Switch>
-        </div>
       </Router>
     </Provider>
 );

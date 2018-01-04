@@ -9,6 +9,7 @@ import ButtonContainer from '../../components/ButtonContainer';
 import CatHeading from '../../components/CatHeading';
 import Heading from '../../components/Heading';
 import PostCard from '../../components/PostCard';
+import NavBar from '../../components/NavBar';
 import '../../theme/globals';
 
 class Home extends PureComponent {
@@ -51,6 +52,7 @@ class Home extends PureComponent {
     const { renderList } = this.state;
     return (
       <PageContainer>
+        <NavBar/>
         <PageContent>
           <ButtonContainer>
             <SortButton onClick={this.sortPostsByDate}>Sort By Date</SortButton>

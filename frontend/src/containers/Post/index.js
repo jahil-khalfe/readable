@@ -7,6 +7,7 @@ import PageContent from '../../components/PageContent';
 import Heading from '../../components/Heading';
 import Comments from '../../components/Comment';
 import PostCard from '../../components/PostCard';
+import NavBar from '../../components/NavBar';
 import styled from "styled-components";
 
 const CommentList = styled.ul`
@@ -76,6 +77,7 @@ class Post extends Component {
     const { singlePost, comments } = this.props;
     return (
       <PageContainer>
+        <NavBar/>
         <PageContent>
           <Heading>{singlePost.title}</Heading>
           <PostCard {...singlePost}/>

@@ -9,6 +9,7 @@ import SortButton from '../../components/SortButton';
 import ButtonContainer from '../../components/ButtonContainer';
 import Heading from '../../components/Heading';
 import PostCard from '../../components/PostCard';
+import NavBar from '../../components/NavBar';
 import '../../theme/globals';
 
 class Category extends PureComponent {
@@ -51,7 +52,7 @@ class Category extends PureComponent {
     console.dir(this.props);
     return (
       <PageContainer>
-        <AddButton>+</AddButton>
+        <NavBar/>
         <PageContent>
           <ButtonContainer>
             <SortButton onClick={this.sortPostsByDate}>Sort By Date</SortButton>
